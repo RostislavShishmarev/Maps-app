@@ -3,7 +3,7 @@ from PyQt5.QtCore import Qt
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtGui import QPixmap
-from Y_search_module import Map
+from Y_search_module import Map, Address, NotFoundResponseError
 
 
 class QMapShower(QMainWindow):
@@ -13,15 +13,21 @@ class QMapShower(QMainWindow):
         self.mode_combo.addItems(['Гибрид', 'Схема', 'Спутник'])
         self.mode_dict = {'Схема': 'skl', 'Спутник': 'sat', 'Гибрид': 'map'}
         self.map_ = Map(coords=[0, 0], size = [1, 1])
+        self.pt = []
+
         self.set_map()
+
         self.show_but.clicked.connect(self.set_map)
+        self.search_but.clicked.connect(self.find_object)
+        self.mode_combo.currentTextChanged.connect(self.set_map)
 
     def set_map(self):
         self.map_.remove_self()
         self.map_ = Map(coords=[self.lon_spin.value(), self.lat_spin.value()],
                         size = [self.size_spin.value(),
                                 self.size_spin.value()],
-                        mode=self.mode_dict[self.mode_combo.currentText()])
+                        mode=self.mode_dict[self.mode_combo.currentText()],
+                        pt=self.pt)
         self.map_lab.setPixmap(QPixmap(self.map_.get_map()))
 
     def closeEvent(self, event):
@@ -46,6 +52,20 @@ class QMapShower(QMainWindow):
         self.lat_spin.setValue(self.lat_spin.value() + lat_delta)
         if any([lat_delta, lon_delta, size_delta]):
             self.set_map()
+
+    def find_object(self):
+        self.statusbar.showMessage('')
+        try:
+            address = Address(self.search_ed.text())
+        except NotFoundResponseError as ex:
+            self.statusbar.showMessage('Ничего не найдено.')
+            return
+        self.pt = [address.get_form_coords() + ',pm2dbm']
+        lon, lat = address.coords
+        self.lon_spin.setValue(lon)
+        self.lat_spin.setValue(lat)
+        self.size_spin.setValue(max(address.size))
+        self.set_map()
 
 
 if __name__ == '__main__':

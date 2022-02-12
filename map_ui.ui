@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>559</width>
-    <height>395</height>
+    <width>656</width>
+    <height>453</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -22,70 +22,28 @@
   <property name="windowTitle">
    <string>Карта</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="2" column="0">
-     <spacer name="verticalSpacer">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
+    <item row="0" column="1">
+     <widget class="QPushButton" name="search_but">
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
       </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
+      <property name="styleSheet">
+       <string notr="true"/>
       </property>
-     </spacer>
+      <property name="text">
+       <string>🔍 Поиск</string>
+      </property>
+     </widget>
     </item>
-    <item row="0" column="0" rowspan="2">
+    <item row="1" column="0" rowspan="2" colspan="2">
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="5" column="1">
-       <widget class="QLabel" name="label_3">
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Тип:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="1">
-       <widget class="QPushButton" name="show_but">
-        <property name="minimumSize">
-         <size>
-          <width>160</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-          <underline>true</underline>
-         </font>
-        </property>
-        <property name="focusPolicy">
-         <enum>Qt::StrongFocus</enum>
-        </property>
-        <property name="text">
-         <string>Отобразить</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="1">
-       <spacer name="verticalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
       <item row="0" column="0" rowspan="9">
        <widget class="QLabel" name="map_lab">
         <property name="text">
@@ -98,6 +56,13 @@
       </item>
       <item row="4" column="1">
        <widget class="QDoubleSpinBox" name="size_spin">
+        <property name="palette">
+         <palette>
+          <active/>
+          <inactive/>
+          <disabled/>
+         </palette>
+        </property>
         <property name="font">
          <font>
           <pointsize>14</pointsize>
@@ -106,8 +71,11 @@
         <property name="focusPolicy">
          <enum>Qt::WheelFocus</enum>
         </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
         <property name="frame">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <property name="buttonSymbols">
          <enum>QAbstractSpinBox::UpDownArrows</enum>
@@ -142,6 +110,9 @@
           <pointsize>14</pointsize>
          </font>
         </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
        </widget>
       </item>
       <item row="0" column="1">
@@ -157,6 +128,9 @@
           <pointsize>14</pointsize>
          </font>
         </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
         <property name="text">
          <string>Координаты:</string>
         </property>
@@ -167,6 +141,13 @@
       </item>
       <item row="1" column="1">
        <widget class="QDoubleSpinBox" name="lat_spin">
+        <property name="palette">
+         <palette>
+          <active/>
+          <inactive/>
+          <disabled/>
+         </palette>
+        </property>
         <property name="font">
          <font>
           <pointsize>14</pointsize>
@@ -174,6 +155,12 @@
         </property>
         <property name="focusPolicy">
          <enum>Qt::WheelFocus</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="frame">
+         <bool>true</bool>
         </property>
         <property name="buttonSymbols">
          <enum>QAbstractSpinBox::UpDownArrows</enum>
@@ -199,6 +186,9 @@
           <pointsize>14</pointsize>
          </font>
         </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
         <property name="text">
          <string>Размер (°):</string>
         </property>
@@ -206,6 +196,13 @@
       </item>
       <item row="2" column="1">
        <widget class="QDoubleSpinBox" name="lon_spin">
+        <property name="palette">
+         <palette>
+          <active/>
+          <inactive/>
+          <disabled/>
+         </palette>
+        </property>
         <property name="font">
          <font>
           <pointsize>14</pointsize>
@@ -213,6 +210,12 @@
         </property>
         <property name="focusPolicy">
          <enum>Qt::WheelFocus</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="frame">
+         <bool>true</bool>
         </property>
         <property name="buttonSymbols">
          <enum>QAbstractSpinBox::UpDownArrows</enum>
@@ -231,7 +234,97 @@
         </property>
        </widget>
       </item>
+      <item row="5" column="1">
+       <widget class="QLabel" name="label_3">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>Тип:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="8" column="1">
+       <widget class="QPushButton" name="show_but">
+        <property name="minimumSize">
+         <size>
+          <width>160</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <underline>true</underline>
+         </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::StrongFocus</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>Отобразить</string>
+        </property>
+       </widget>
+      </item>
      </layout>
+    </item>
+    <item row="3" column="0">
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLineEdit" name="search_ed">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>25</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -240,7 +333,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>559</width>
+     <width>656</width>
      <height>21</height>
     </rect>
    </property>
