@@ -60,7 +60,7 @@ class QMapShower(QMainWindow):
         except NotFoundResponseError as ex:
             self.statusbar.showMessage('Ничего не найдено.')
             return
-        self.pt = [address.get_form_coords() + ',pm2dbm']
+        self.pt += [address.get_form_coords() + ',pm2dbm']
         lon, lat = address.coords
         self.lon_spin.setValue(lon)
         self.lat_spin.setValue(lat)
