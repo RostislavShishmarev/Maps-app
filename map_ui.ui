@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>656</width>
-    <height>453</height>
+    <height>438</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -41,19 +41,6 @@
        <string>🔍 Поиск</string>
       </property>
      </widget>
-    </item>
-    <item row="3" column="0">
-     <spacer name="verticalSpacer">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
-      </property>
-     </spacer>
     </item>
     <item row="0" column="0">
      <widget class="QLineEdit" name="search_ed">
@@ -99,17 +86,7 @@
     </item>
     <item row="1" column="0" rowspan="2" colspan="3">
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="0" column="0" rowspan="9">
-       <widget class="QLabel" name="map_lab">
-        <property name="text">
-         <string>Карта</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
+      <item row="4" column="2">
        <widget class="QDoubleSpinBox" name="size_spin">
         <property name="palette">
          <palette>
@@ -152,7 +129,22 @@
         </property>
        </widget>
       </item>
-      <item row="6" column="1">
+      <item row="9" column="0">
+       <widget class="QLineEdit" name="address_ed">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="2">
        <widget class="QComboBox" name="mode_combo">
         <property name="maximumSize">
          <size>
@@ -170,7 +162,7 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
+      <item row="0" column="2">
        <widget class="QLabel" name="label">
         <property name="maximumSize">
          <size>
@@ -194,7 +186,7 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
+      <item row="1" column="2">
        <widget class="QDoubleSpinBox" name="lat_spin">
         <property name="palette">
          <palette>
@@ -234,7 +226,7 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
+      <item row="3" column="2">
        <widget class="QLabel" name="label_2">
         <property name="font">
          <font>
@@ -249,7 +241,7 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
+      <item row="2" column="2">
        <widget class="QDoubleSpinBox" name="lon_spin">
         <property name="palette">
          <palette>
@@ -289,7 +281,7 @@
         </property>
        </widget>
       </item>
-      <item row="5" column="1">
+      <item row="5" column="2">
        <widget class="QLabel" name="label_3">
         <property name="font">
          <font>
@@ -304,35 +296,7 @@
         </property>
        </widget>
       </item>
-      <item row="7" column="1">
-       <spacer name="verticalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="9" column="0">
-       <widget class="QLineEdit" name="address_ed">
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="1" rowspan="2">
+      <item row="8" column="2" rowspan="2">
        <widget class="QPushButton" name="show_but">
         <property name="minimumSize">
          <size>
@@ -357,7 +321,55 @@
         </property>
        </widget>
       </item>
+      <item row="7" column="2">
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="9" column="1">
+       <widget class="QCheckBox" name="withpost_check">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>С индексом</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" rowspan="9" colspan="2">
+       <widget class="QLabel" name="map_lab">
+        <property name="text">
+         <string>Карта</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
      </layout>
+    </item>
+    <item row="3" column="0" colspan="3">
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
     </item>
    </layout>
   </widget>

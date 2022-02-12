@@ -3,7 +3,7 @@ from PyQt5.QtCore import Qt
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtGui import QPixmap
-from Y_search_module import Map, Address, NotFoundResponseError
+from Y_search_module import Map, NotFoundResponseError, Address
 
 
 class QMapShower(QMainWindow):
@@ -66,7 +66,9 @@ class QMapShower(QMainWindow):
             self.statusbar.showMessage('Ничего не найдено.')
             return
         self.addresses += [address]
-        self.address_ed.setText(address.full_address)
+        ind = ', почтовый индекс: ' + address.post_index\
+            if self.withpost_check.checkState() else ''
+        self.address_ed.setText(address.full_address + ind)
         lon, lat = address.coords
         self.lon_spin.setValue(lon)
         self.lat_spin.setValue(lat)

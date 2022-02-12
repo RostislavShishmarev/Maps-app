@@ -130,6 +130,11 @@ class Address:
         self.geo = geocode(address)
         self.full_address = self.geo['metaDataProperty']['Geocoder\
 MetaData']['text']
+        try:
+            self.post_index = self.geo['metaDataProperty']['Geocoder\
+MetaData']['Address']['postal_code']
+        except KeyError as ex:
+            self.post_index = '—'
         self.coords = [float(i) for i in self.geo['Point']['pos'].split()]
 
         self.size_coef = size_coef
