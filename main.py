@@ -19,6 +19,7 @@ class QMapShower(QMainWindow):
 
         self.show_but.clicked.connect(self.set_map)
         self.search_but.clicked.connect(self.find_object)
+        self.back_but.clicked.connect(self.del_last_pt)
         self.mode_combo.currentTextChanged.connect(self.set_map)
 
     def set_map(self):
@@ -55,6 +56,8 @@ class QMapShower(QMainWindow):
 
     def find_object(self):
         self.statusbar.showMessage('')
+        if not self.search_ed.text():
+            return
         try:
             address = Address(self.search_ed.text())
         except NotFoundResponseError as ex:
@@ -66,6 +69,11 @@ class QMapShower(QMainWindow):
         self.lat_spin.setValue(lat)
         self.size_spin.setValue(max(address.size))
         self.set_map()
+
+    def del_last_pt(self):
+        if self.pt:
+            del self.pt[-1]
+            self.set_map()
 
 
 if __name__ == '__main__':
