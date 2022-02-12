@@ -128,6 +128,8 @@ class Address:
     def __init__(self, address, size_coef=1, auto_size=False):
         self.text = address
         self.geo = geocode(address)
+        self.full_address = self.geo['metaDataProperty']['Geocoder\
+MetaData']['text']
         self.coords = [float(i) for i in self.geo['Point']['pos'].split()]
 
         self.size_coef = size_coef

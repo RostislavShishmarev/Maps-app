@@ -13,7 +13,7 @@ class QMapShower(QMainWindow):
         self.mode_combo.addItems(['Гибрид', 'Схема', 'Спутник'])
         self.mode_dict = {'Схема': 'skl', 'Спутник': 'sat', 'Гибрид': 'map'}
         self.map_ = Map(coords=[0, 0], size = [1, 1])
-        self.pt = []
+        self.addresses = []
 
         self.set_map()
 
@@ -24,11 +24,13 @@ class QMapShower(QMainWindow):
 
     def set_map(self):
         self.map_.remove_self()
+        pt = [ad.get_form_coords() + ',pm2dbm'
+              for ad in self.addresses]  # if self.addresses else []
         self.map_ = Map(coords=[self.lon_spin.value(), self.lat_spin.value()],
                         size = [self.size_spin.value(),
                                 self.size_spin.value()],
                         mode=self.mode_dict[self.mode_combo.currentText()],
-                        pt=self.pt)
+                        pt=pt)
         self.map_lab.setPixmap(QPixmap(self.map_.get_map()))
 
     def closeEvent(self, event):
@@ -63,7 +65,8 @@ class QMapShower(QMainWindow):
         except NotFoundResponseError as ex:
             self.statusbar.showMessage('Ничего не найдено.')
             return
-        self.pt += [address.get_form_coords() + ',pm2dbm']
+        self.addresses += [address]
+        self.address_ed.setText(address.full_address)
         lon, lat = address.coords
         self.lon_spin.setValue(lon)
         self.lat_spin.setValue(lat)
@@ -71,8 +74,9 @@ class QMapShower(QMainWindow):
         self.set_map()
 
     def del_last_pt(self):
-        if self.pt:
-            del self.pt[-1]
+        if self.addresses:
+            del self.addresses[-1]
+            self.address_ed.setText('')
             self.set_map()
 
 
