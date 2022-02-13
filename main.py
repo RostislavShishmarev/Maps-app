@@ -21,11 +21,11 @@ class QMapShower(QMainWindow):
         self.search_but.clicked.connect(self.find_object)
         self.back_but.clicked.connect(self.del_last_pt)
         self.mode_combo.currentTextChanged.connect(self.set_map)
+        self.withpost_check.stateChanged.connect(self.set_address)
 
     def set_map(self):
         self.map_.remove_self()
-        pt = [ad.get_form_coords() + ',pm2dbm'
-              for ad in self.addresses]  # if self.addresses else []
+        pt = [ad.get_form_coords() + ',pm2dbm' for ad in self.addresses]
         self.map_ = Map(coords=[self.lon_spin.value(), self.lat_spin.value()],
                         size = [self.size_spin.value(),
                                 self.size_spin.value()],
@@ -66,9 +66,7 @@ class QMapShower(QMainWindow):
             self.statusbar.showMessage('Ничего не найдено.')
             return
         self.addresses += [address]
-        ind = ', почтовый индекс: ' + address.post_index\
-            if self.withpost_check.checkState() else ''
-        self.address_ed.setText(address.full_address + ind)
+        self.set_address()
         lon, lat = address.coords
         self.lon_spin.setValue(lon)
         self.lat_spin.setValue(lat)
@@ -79,7 +77,16 @@ class QMapShower(QMainWindow):
         if self.addresses:
             del self.addresses[-1]
             self.address_ed.setText('')
+            self.search_ed.setText('')
             self.set_map()
+
+    def set_address(self):
+        if self.addresses:
+            ind = ', почтовый индекс: ' + self.addresses[-1].post_index\
+                if self.withpost_check.checkState() else ''
+            self.address_ed.setText(self.addresses[-1].full_address + ind)
+        else:
+            self.address_ed.setText('')
 
 
 if __name__ == '__main__':
